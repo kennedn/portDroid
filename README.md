@@ -1,4 +1,3 @@
-# portDroid
 portDroid
 ======
 **portDroid** is a small shell script that makes it easy to have systemwide SSH port forwards on Android devices.
