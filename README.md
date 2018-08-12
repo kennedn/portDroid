@@ -17,5 +17,5 @@ portDroid
 
 ## Usage
 
-- Run it with bash e.g bash **pordDroid.sh**
-Note: On first run you will likely be asked to add the server to know hosts.
+- Run it with bash e.g bash **portDroid.sh**
+- Note: On first run you will likely be asked to add the server to know hosts.
