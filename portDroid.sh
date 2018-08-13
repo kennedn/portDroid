@@ -12,10 +12,10 @@ fi
 ### Start SSH Command construction
 SSHCOMMAND="$SSHBIN -i $PRIVKEY -f -N -p $PORT"
 
-for pf in ${PORTFORWARDS[@]}; do
+for pf in "${PORTFORWARDS[@]}"; do
 	SSHCOMMAND="$SSHCOMMAND -L ${pf}"
 done
-SSHCOMMAND="$SSHCOMMAND ${USERNAME}@${SERVERADDR}"
+SSHCOMMAND="$SSHCOMMAND ${USERNAME}@${SERVERADDR} &> /dev/null"
 ### End Construction
 
 # Kill all running ssh processes if there are any
@@ -44,11 +44,11 @@ while true; do
 	# Kill SSH if the state of the VPN has changed	 
 	ifconfig "$VPNDEVNAME" > /dev/null 2>&1
 	rt="$?"
-	 if [ "${rt}" != "${isTun}" ]; then
+	if [ "${rt}" != "${isTun}" ]; then
 		isTun=${rt}
-		kill "$(pgrep -f "$PRIVKEY")" 2> /dev/null
+		killSSH
 		echo "VPN State Changed"
-	 fi
+	fi
 
 	# If ssh is not running
 	if ! pgrep -f "$PRIVKEY" > /dev/null 2>&1 ; then
