@@ -5,15 +5,18 @@ portDroid
 ## Prerequisites
 
 - A Rooted Android device
-- A Bash Binary (Busybox can supply this)
-- An SSH Binary (Recommend sshdroid, get it from the playstore [here](https://play.google.com/store/apps/details?id=berserker.android.apps.sshdroid))
+- An SSH & BASH Binary (Recommend sshdroid, get it from the playstore [here](https://play.google.com/store/apps/details?id=berserker.android.apps.sshdroid))
 - A Public Private Key pair setup with your remote server
-- A way to run this script at boot (Recommend smanager, get it from the playstore [here](https://play.google.com/store/apps/details?id=os.tools.scriptmanager))
+- **Optional:** A way to run this script at boot (Recommend smanager, get it from the playstore [here](https://play.google.com/store/apps/details?id=os.tools.scriptmanager))
 
 ## Installation
 
 - Place portDroid.sh and .portDroid.cfg in the same directory somewhere on your device.
 - Fill out .portDroid.cfg with your configuration
+- Convert a Private Key from OpenSSH to dropbear format using the following command (requires sshdroid);
+````
+exec  /data/data/berserker.android.apps.sshdroid/dropbear/dropbearconvert openssh dropbear <opensshkey> outputfile
+````
 
 ## Usage
 
